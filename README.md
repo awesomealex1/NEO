@@ -92,6 +92,20 @@ On Vit-Base with 512 samples of adaptation NEO achieves high accuracy compared t
 | **ImageNet-R** | 59.2 (1.1) | 58.7 (1.2) | 59.3 (1.1) | 58.5 (1.1) | 59.4 (1.1) | 59.2 (1.2) | <u>60.2 (1.4)</u> | <u>60.2 (1.6)</u> | **60.3 (1.0)** |
 | **ImageNet-S** | 45.4 (1.4) | 45.5 (1.4) | 45.5 (1.4) | 45.0 (1.3) | 45.7 (1.4) | 45.2 (1.6) | 46.3 (1.7) | <u>47.0 (1.7)</u> | **47.2 (1.4)** |
 
+## Citation
+
+```
+@misc{murphy2025neonooptimizationtesttimeadaptation,
+      title={NEO: No-Optimization Test-Time Adaptation through Latent Re-Centering}, 
+      author={Alexander Murphy and Michal Danilowski and Soumyajit Chatterjee and Abhirup Ghosh},
+      year={2025},
+      eprint={2510.05635},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2510.05635}, 
+}
+```
+
 ## Acknowledgment
 
 This code is inspired from [FOA](https://github.com/mr-eggplant/FOA).
