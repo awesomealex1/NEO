@@ -205,8 +205,8 @@ def get_args():
     # compared method settings
     parser.add_argument('--margin_e0', default=0.4*math.log(1000), type=float, help='the entropy margin for sar')    
 
-    # t4a settings
-    parser.add_argument('--learning_rate', default=0.1, type=float, help='learning rate for T4A direction updates')
+    # neo settings
+    parser.add_argument('--learning_rate', default=0.1, type=float, help='learning rate for neo direction updates')
 
     # output settings
     parser.add_argument('--output', default='./outputs', help='the output directory of this experiment')
