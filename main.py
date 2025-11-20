@@ -67,7 +67,7 @@ def main():
             top1_adapt_avg, top5_adapt_avg, entropy_adapt_avg, ece_adapt_avg = top1_adapt.avg.item(), top5_adapt.avg.item(), entropy_adapt.avg, ece_adapt.avg
             top1_adapt_vals, top5_adapt_vals, entropy_adapt_vals, ece_adapt_vals = top1_adapt.vals, top5_adapt.vals, entropy_adapt.vals, ece_adapt.vals
         
-            print(f"\nAdaptation Results for \033[94m{args.corruption}\033[0m with algorithm \033[93m{args.algorithm}\033[0m:")
+            print(f"\nAdaptation Results for {args.corruption} with algorithm {args.algorithm}:")
             print(f"  Adapt Validation Top-1 Accuracy: {top1_adapt_avg:.6f}")
             print(f"  Adapt Validation Top-5 Accuracy: {top5_adapt_avg:.6f}")
             print(f"  Adapt Validation Entropy: {entropy_adapt_avg:.6f}")
@@ -85,7 +85,7 @@ def main():
             top1_val_avg, top5_val_avg, entropy_val_avg, ece_val_avg = top1_val.avg.item(), top5_val.avg.item(), entropy_val.avg, ece_val.avg
             top1_val_vals, top5_val_vals, entropy_val_vals, ece_val_vals = top1_val.vals, top5_val.vals, entropy_val.vals, ece_val.vals
 
-            print(f"\Validation Results for \033[94m{args.corruption}\033[0m with algorithm \033[93m{args.algorithm}\033[0m:")
+            print(f"\nValidation Results for {args.corruption} with algorithm {args.algorithm}:")
             print(f"  Validation Top-1 Accuracy: {top1_val_avg:.6f}")
             print(f"  Validation Top-5 Accuracy: {top5_val_avg:.6f}")
             print(f"  Validation Entropy: {entropy_val_avg:.6f}")
