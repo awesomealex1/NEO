@@ -27,7 +27,7 @@ class NEO_Cont(torch.nn.Module):
         self.learning_rate = learning_rate
 
     def forward(self, x, adapt=True):
-        z = self.featurizer(x)
+        z = self.feature_extractor(x)
 
         if adapt:
             self.corrupt_class_center = (1 - self.learning_rate) * self.corrupt_class_center + self.learning_rate * torch.mean(z, dim=0) 
