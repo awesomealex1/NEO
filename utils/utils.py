@@ -183,7 +183,7 @@ def get_args():
     parser.add_argument('--batch_count', default=-1, type=int, help='number of batches to perform validation on (default: unlimited)')
     parser.add_argument('--adapt_label_count', default=0, type=int, help='number of labels to only use for adaptation (default: 0)')
     parser.add_argument('--adapt_batch_count', default=-1, type=int, help='for how many batches to adapt, if even label distributions (default: unlimited)')
-    parser.add_argument('--vit_type', default="base", type=str, help='type of ViT model (small, base, large)')
+    parser.add_argument('--vit_type', default="base", type=str, help='type of ViT model (small, base, large) or resnet50')
     parser.add_argument('--save_shift', default=False, action='store_true', help='whether to save the shift vector after adaptation')
 
     # algorithm selection

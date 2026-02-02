@@ -4,7 +4,7 @@ from dataset.ImageNetMask import imagenet_r_mask
 import torch.nn as nn
 from utils.utils import get_device
 
-def get_vit_feature_extractor(network):
+def get_feature_extractor(network):
     # Different ways depending on the ViT implementation
     if hasattr(network, 'head'):
         network.head = nn.Identity()
@@ -13,6 +13,10 @@ def get_vit_feature_extractor(network):
         return network
     elif hasattr(network, 'classifier'):
         return lambda x: network.vit(x)[0][:, 0, :]
+    elif hasattr(network, 'fc'):
+        # For ResNet-like architectures
+        network.fc = nn.Identity()
+        return network
 
 class NEO(torch.nn.Module):
 
@@ -22,7 +26,10 @@ class NEO(torch.nn.Module):
             self.classifier = model.head
         elif hasattr(model, 'classifier'):
             self.classifier = model.classifier
-        self.feature_extractor = get_vit_feature_extractor(model)
+        elif hasattr(model, 'fc'):
+            self.classifier = model.fc
+            
+        self.feature_extractor = get_feature_extractor(model)
         self.adapt_sample_count = 0
         self.corrupt_class_center = torch.zeros(self.classifier.weight.data.shape[1]).to(get_device())
 

@@ -79,6 +79,8 @@ def init_model(args):
             net = timm.create_model('vit_base_patch16_224', pretrained=True)
         elif args.vit_type == "large":
             net = timm.create_model('vit_large_patch16_224', pretrained=True)
+        elif args.vit_type == "resnet50":
+            net = timm.create_model('resnet50', pretrained=True)
     
     net = net.to(get_device())
     net.eval()
@@ -94,6 +96,9 @@ def init_adapt_model(args, net):
         optimizer = torch.optim.Adam(params, tent_lr)
         adapt_model = tent.Tent(net, optimizer)
     elif args.algorithm == 'foa':
+        if "vit" not in args.vit_type and not args.cifar_10:
+             raise ValueError("FOA algorithm currently only supports ViT models (PromptViT).")
+             
         if args.cifar_10:
             net = PromptViTForImageClassification(net, args.num_prompts).to(get_device())
         else:
