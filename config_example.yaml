@@ -1,0 +1,11 @@
+# Sample config file for specifying data directories
+# Usage: python main.py --config config_example.yaml [other args]
+
+# Dataset Paths
+data: /data/imagenet
+data_v2: /data/imagenet-v2
+data_sketch: /data/sketch
+data_corruption: /data/imagenet-c
+data_rendition: /data/imagenet-r
+data_cifar_10_c: /data/cifar-10-c
+cifar_10_original: /data/cifar-10

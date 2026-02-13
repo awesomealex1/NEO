@@ -160,8 +160,24 @@ def get_device() -> torch.device:
     else:
         return torch.device("cpu")
 
+import yaml
+
 def get_args():
-    parser = argparse.ArgumentParser(description='PyTorch ImageNet-C Testing')
+    # First, creating a parser to check for the config file
+    conf_parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter, add_help=False)
+    conf_parser.add_argument("--config", help="Specify config file", metavar="FILE")
+    args, remaining_argv = conf_parser.parse_known_args()
+
+    defaults = {}
+    if args.config:
+        with open(args.config, 'r') as f:
+            config_args = yaml.safe_load(f)
+            # Filter out any keys that aren't valid arguments to avoid errors later if config has extra stuff
+            # Or just update defaults. 
+            defaults.update(config_args)
+
+    # Parse rest of arguments
+    parser = argparse.ArgumentParser(description='PyTorch ImageNet-C Testing', parents=[conf_parser])
 
     # path of data, output dir
     parser.add_argument('--data', default='/data/imagenet', help='path to dataset')
@@ -218,7 +234,8 @@ def get_args():
     parser.add_argument('--corrupt_center_path', default='', type=str, help='path to pre-saved corrupt class center (for NEO)')
     parser.add_argument('--corrupt_center_save_path', default='', type=str, help='path to save corrupt class center after adaptation (for NEO)')
 
-    return parser.parse_args()
+    parser.set_defaults(**defaults)
+    return parser.parse_args(remaining_argv)
 
 
 def init_wandb(args):
