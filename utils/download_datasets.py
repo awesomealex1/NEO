@@ -76,7 +76,7 @@ def main():
 
         # Check if all sub-folders for this archive already exist to skip the process
         all_extracted = all(
-            os.path.exists(os.path.join(DESTINATION_PATH, "imagenet-c", corruption))
+            os.path.exists(os.path.join(DESTINATION_PATH, corruption))
             for corruption in corruption_list
         )
 
