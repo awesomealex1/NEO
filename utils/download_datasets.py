@@ -9,14 +9,13 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 # --- Configuration ---
 DESTINATION_PATH = "data/imagenet-c"
 REMOVE_TAR_AFTER_EXTRACTION = True
-MAX_WORKERS = 5  
+MAX_WORKERS = 4 
 EXPECTED_FILES_PER_CORRUPTION = 250000 # 50k images * 5 severities
 # ---------------------
 
 CORRUPTION_GROUPS = {
     "blur.tar": ["defocus_blur", "glass_blur", "motion_blur", "zoom_blur"],
     "digital.tar": ["contrast", "elastic_transform", "pixelate", "jpeg_compression"],
-    "extra.tar": ["gaussian_blur", "saturate", "spatter", "speckle_noise"],
     "noise.tar": ["gaussian_noise", "shot_noise", "impulse_noise"],
     "weather.tar": ["snow", "frost", "fog", "brightness"]
 }
