@@ -183,7 +183,7 @@ def get_args():
     parser.add_argument('--data', default='/data/imagenet', help='path to dataset')
     parser.add_argument('--data_v2', default='/data/imagenet-v2', help='path to dataset')
     parser.add_argument('--data_sketch', default='/data/sketch', help='path to dataset')
-    parser.add_argument('--data_corruption', default='/data/imagenet-c', help='path to corruption dataset')
+    parser.add_argument('--data_corruption', default='data/imagenet-c', help='path to corruption dataset')
     parser.add_argument('--data_rendition', default='/data/imagenet-r', help='path to corruption dataset')
     parser.add_argument('--data_cifar_10_c', default='/data/cifar-10-c', help='path to corruption dataset')
     parser.add_argument('--cifar_10_original', default='/data/cifar-10', help='path to CIFAR-10 original dataset')
