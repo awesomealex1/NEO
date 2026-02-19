@@ -8,6 +8,7 @@ import tta_library.tent as tent
 import tta_library.sar as sar
 import tta_library.cotta as cotta
 from tta_library.neo_cont import NEO_Cont
+from tta_library.neo_bn import NEO_BN
 from tta_library.surgeon import Surgeon
 
 import copy
@@ -129,6 +130,11 @@ def init_adapt_model(args, net):
         adapt_model = NoAdapt(net)
     elif args.algorithm == "neo":
         adapt_model = NEO(net, args.num_classes).to(get_device())
+        if args.corrupt_center_path != '':
+            center = torch.load(args.corrupt_center_path, map_location=get_device())
+            adapt_model.set_corrupt_center(center)
+    elif args.algorithm == "neo_bn":
+        adapt_model = NEO_BN(net, args.num_classes).to(get_device())
         if args.corrupt_center_path != '':
             center = torch.load(args.corrupt_center_path, map_location=get_device())
             adapt_model.set_corrupt_center(center)

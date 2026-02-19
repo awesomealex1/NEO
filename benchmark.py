@@ -14,7 +14,7 @@ CORRUPTIONS = [
     'contrast', 'elastic_transform', 'pixelate', 'jpeg_compression'
 ]
 
-ALGORITHMS = ['no_adapt', 'tent', 'sar', 'cotta', 'neo']
+ALGORITHMS = ['no_adapt', 'tent', 'sar', 'cotta', 'neo', 'neo_bn']
 SEEDS = [2020, 2021, 2022]
 
 def get_args():
