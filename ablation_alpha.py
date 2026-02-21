@@ -25,7 +25,7 @@ def get_args():
     parser = argparse.ArgumentParser(description='Ablation Study: Alpha (Learning Rate)')
     parser.add_argument('--alphas', type=float, nargs='+', default=ALPHAS, help='List of alphas/LRs to test')
     parser.add_argument('--seeds', type=int, nargs='+', default=SEEDS, help='List of seeds')
-    parser.add_argument('--config', type=str, default='config_example.yaml', help='Path to config file')
+    parser.add_argument('--config', type=str, default='config.yaml', help='Path to config file')
     parser.add_argument('--dry_run', action='store_true', help='Print commands without running')
     parser.add_argument('--skip_existing', action='store_true', default=True, help='Skip if result file exists')
     return parser.parse_args()
