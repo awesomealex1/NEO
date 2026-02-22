@@ -32,7 +32,7 @@ def get_args():
 
 def run_experiment(alpha, seed, corruption, args):
     cmd = [
-        "python", "main.py",
+        "python", "-u", "main.py",
         "--config", args.config,
         "--vit_type", VIT_TYPE,
         "--level", str(LEVEL),
