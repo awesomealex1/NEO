@@ -122,12 +122,15 @@ def main():
             dec_accum = DecAccumulator(num_classes, feature_dim, get_device(), M=means, W=weights)
             dec_accum.accumulate(all_features, all_labels, weights, means)
             
+            def _to_float(val):
+                return float(val.item()) if hasattr(val, 'item') else float(val)
+
             # 3. Calculate Results
             results = {
-                "nc1_cdnv": variability_cdnv(var_norms, means).item(),
-                "nc2_etf_err": simplex_etf_error(means, mG).item(),
-                "nc3_dual_err": self_duality_error(weights, means, mG).item(),
-                "nc4_agree": clf_ncc_agreement(dec_accum).item(),
+                "nc1_cdnv": _to_float(variability_cdnv(var_norms, means)),
+                "nc2_etf_err": _to_float(simplex_etf_error(means, mG)),
+                "nc3_dual_err": _to_float(self_duality_error(weights, means, mG)),
+                "nc4_agree": _to_float(clf_ncc_agreement(dec_accum)),
             }
             
             print(f"Results for {corruption}:")
